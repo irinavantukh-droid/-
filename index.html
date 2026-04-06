@@ -19,80 +19,26 @@
             <p class="text-gray-600 mt-2">Период: Январь - Февраль (на базе загруженных данных)</p>
         </header>
 
+        <!-- Утвержденный план развития -->
+        <section class="card border-l-4 border-green-500">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Утвержденный стратегический план обучения</h2>
+            <div class="space-y-4 text-gray-700">
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li><strong>Аудит данных и устранение ошибок:</strong> лучшие практики защиты ячеек (IFERROR, ARRAYFORMULA) и устранение #REF! / #DIV/0! в Google Таблицах.</li>
+                    <li><strong>Связка трех отчетов (ДДС, ОПиУ, Баланс):</strong> правило двойной записи, автоматический перенос чистой прибыли и остатков денежных средств.</li>
+                    <li><strong>Финансовый анализ:</strong> поиск аномалий, выявление причин резких просадок прибыли при растущей выручке.</li>
+                    <li><strong>Визуализация:</strong> связка табличных данных с кодом для создания интерактивных веб-дашбордов.</li>
+                    <li class="text-green-700 font-semibold"><strong>Автоматизация через Google Apps Script:</strong> написание скриптов для устранения рутины, макросы для импорта и связывания CSV-отчетов.</li>
+                </ol>
+                <div class="mt-4 p-3 bg-green-50 rounded-md text-sm text-green-800">
+                    ✅ План официально утвержден.
+                </div>
+            </div>
+        </section>
+
         <!-- Пояснительная записка -->
         <section class="card border-l-4 border-blue-500">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Пояснительная записка (Фактические данные)</h2>
             <div class="space-y-4 text-gray-700">
                 <p><strong>1. Финансовый результат (ОПиУ):</strong></p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Совокупная выручка за Январь составила <strong>186.99 млн руб.</strong>, за Февраль — <strong>228.28 млн руб.</strong> (рост на 41.28 млн руб.).</li>
-                    <li>Основной драйвер выручки — направление <strong>«Шушары»</strong> (186 млн руб. в январе и 224.3 млн руб. в феврале). Направления «Парнас» и «Складская» генерируют менее 1% выручки.</li>
-                    <li>Несмотря на рост выручки во втором месяце, <strong>Чистая прибыль</strong> упала с <strong>+12.89 млн руб.</strong> (Январь) до убытка <strong>-41.67 млн руб.</strong> (Февраль).</li>
-                    <li>Причина убытка: резкий рост <em>Административных расходов</em> (с 3.6 млн руб. до 81.5 млн руб.) и рост <em>Производственных расходов</em> (со 157.4 млн руб. до 174.1 млн руб.).</li>
-                </ul>
-
-                <p><strong>2. Движение денежных средств (ДДС):</strong></p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Остатки на начало периода (Январь) по всем кошелькам составляли около <strong>87.22 млн руб.</strong></li>
-                    <li>Зафиксированы крупные поступления от покупателей: 73.68 млн руб. (Январь) и 246.84 млн руб. (Февраль).</li>
-                </ul>
-
-                <p><strong>3. Структура Баланса:</strong></p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Валюта баланса (Активы) снизилась с <strong>603.39 млн руб.</strong> в первом месяце до <strong>377.10 млн руб.</strong> во втором.</li>
-                    <li>Коэффициент абсолютной ликвидности ниже нормы, но показывает рост: с 0.17 (Январь) до 0.47 (Февраль) при целевом значении ≥ 0.2.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Холст ошибок -->
-        <section class="card border-l-4 border-red-500">
-            <h2 class="text-xl font-bold text-gray-800 mb-4">Холст: Найденные технические ошибки в модели</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Ошибка 1 -->
-                <div class="border p-4 rounded-lg bg-gray-50">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold text-gray-800">Потеря ссылок (#REF!) в ДДС</h3>
-                        <span class="error-badge">Критично</span>
-                    </div>
-                    <p class="text-sm text-gray-600"><strong>Файлы:</strong> ДДС настройки, ДДС СВОД короткий, ДДС Свод (1)</p>
-                    <p class="text-sm text-gray-700 mt-2"><strong>Описание:</strong> В настройках начальных остатков по кошелькам (Альфа_14516, Сбер_43914, Овердрафты, Подотчет и др.) слетели формулы ссылок. Это ломает весь расчет денежного потока на начало и конец месяца.</p>
-                </div>
-
-                <!-- Ошибка 2 -->
-                <div class="border p-4 rounded-lg bg-gray-50">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold text-gray-800">Деление на ноль (#DIV/0!)</h3>
-                        <span class="error-badge">Критично</span>
-                    </div>
-                    <p class="text-sm text-gray-600"><strong>Файл:</strong> ОПиУ Факт</p>
-                    <p class="text-sm text-gray-700 mt-2"><strong>Описание:</strong> В строке 3 (Точка безубыточности) и блоке "Горизонтальный анализ" возникает ошибка деления на ноль. Это происходит из-за отсутствия данных или макроса обработки пустых ячеек (например, IFERROR) для месяцев с 3 по 12.</p>
-                </div>
-
-                <!-- Ошибка 3 -->
-                <div class="border p-4 rounded-lg bg-gray-50">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold text-gray-800">Отсутствие связки Баланса с ОПиУ/ДДС</h3>
-                        <span class="warning-badge">Архитектура</span>
-                    </div>
-                    <p class="text-sm text-gray-600"><strong>Файл:</strong> Баланс 2026</p>
-                    <p class="text-sm text-gray-700 mt-2"><strong>Описание:</strong> Накопленная прибыль текущего периода не перетекает автоматически из ОПиУ, а остатки денежных средств требуют ручного контроля. Правило A = P (Активы = Пассивы) может не сойтись без жесткой перелинковки.</p>
-                </div>
-
-                <!-- Ошибка 4 -->
-                <div class="border p-4 rounded-lg bg-gray-50">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold text-gray-800">Рассинхрон справочников</h3>
-                        <span class="warning-badge">Архитектура</span>
-                    </div>
-                    <p class="text-sm text-gray-600"><strong>Файлы:</strong> Справочники ДДС и ОПиУ</p>
-                    <p class="text-sm text-gray-700 mt-2"><strong>Описание:</strong> Статьи затрат в ДДС (например, "Издержки") не имеют четкого сопоставления с блоками ОПиУ (смешивание Административных расходов с Общепроизводственными). Нужен единый маппинг (Mapping table).</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-</body>
-</html>
+                <ul class="list-disc pl-5 space-y
